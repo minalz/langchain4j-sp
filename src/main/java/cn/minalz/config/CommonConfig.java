@@ -13,10 +13,10 @@ public class CommonConfig {
     @Autowired
     private OpenAiChatModel chatModel;
 
-    @Bean
+    /*@Bean
     public ConsultantService consultantService() {
         return AiServices.builder(ConsultantService.class)
                 .chatModel(chatModel)
                 .build();
-    }
+    }*/
 }
