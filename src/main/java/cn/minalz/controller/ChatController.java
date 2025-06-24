@@ -13,8 +13,8 @@ public class ChatController {
     private ConsultantService consultantService;
 
     @GetMapping(value = "/chat", produces = "text/html;charset=utf-8")
-    public Flux<String> chat(String message) {
-        return consultantService.chat(message);
+    public Flux<String> chat(String memoryId, String message) {
+        return consultantService.chat(memoryId, message);
     }
 
     /*@GetMapping("/chat")
