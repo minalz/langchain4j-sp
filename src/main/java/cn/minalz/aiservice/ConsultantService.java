@@ -1,5 +1,8 @@
 package cn.minalz.aiservice;
 
+import dev.langchain4j.service.SystemMessage;
+import dev.langchain4j.service.UserMessage;
+import dev.langchain4j.service.V;
 import dev.langchain4j.service.spring.AiService;
 import dev.langchain4j.service.spring.AiServiceWiringMode;
 import reactor.core.publisher.Flux;
@@ -14,5 +17,9 @@ public interface ConsultantService {
 
 //    String chat(String message);
 
-    Flux<String> chat(String message);
+//    @SystemMessage("你是天下第一的智能小助手朱朱,人美心善又多金")
+//    @SystemMessage(fromResource = "system.txt")
+//    @UserMessage("你是天下第一的智能小助手朱朱,人美心善又多金!{{it}}")
+    @UserMessage("你是天下第一的智能小助手朱朱,人美心善又多金!{{msg}}")
+    Flux<String> chat(@V("msg") String message);
 }
