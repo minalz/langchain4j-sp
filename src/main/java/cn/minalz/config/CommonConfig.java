@@ -1,6 +1,7 @@
 package cn.minalz.config;
 
 import dev.langchain4j.community.store.embedding.redis.RedisEmbeddingStore;
+import dev.langchain4j.community.store.embedding.redis.spring.RedisEmbeddingStoreAutoConfiguration;
 import dev.langchain4j.data.document.Document;
 import dev.langchain4j.data.document.DocumentSplitter;
 import dev.langchain4j.data.document.loader.ClassPathDocumentLoader;
@@ -76,7 +77,7 @@ public class CommonConfig {
         // 2.构建向量数据库操作对象
         // 构建文档分割器对象
         DocumentSplitter ds = DocumentSplitters.recursive(500, 100);
-        // 内存向量数据库
+        // 这是内存向量分割 重启后就没了
 //        InMemoryEmbeddingStore store = new InMemoryEmbeddingStore();
         // 3.构建一个EmbeddingStoreIngestor对象，完成文本数据切割，向量化，存储
         EmbeddingStoreIngestor ingestor = EmbeddingStoreIngestor.builder()
@@ -94,7 +95,6 @@ public class CommonConfig {
     @Bean
     public ContentRetriever contentRetriever(/*EmbeddingStore embeddingStore*/) {
         return EmbeddingStoreContentRetriever.builder()
-//                .embeddingStore(embeddingStore)
                 .embeddingStore(redisEmbeddingStore)
                 .minScore(0.5)
                 .maxResults(3)
