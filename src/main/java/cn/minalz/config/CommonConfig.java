@@ -1,7 +1,6 @@
 package cn.minalz.config;
 
 import dev.langchain4j.community.store.embedding.redis.RedisEmbeddingStore;
-import dev.langchain4j.community.store.embedding.redis.spring.RedisEmbeddingStoreAutoConfiguration;
 import dev.langchain4j.data.document.Document;
 import dev.langchain4j.data.document.DocumentSplitter;
 import dev.langchain4j.data.document.loader.ClassPathDocumentLoader;
@@ -67,7 +66,8 @@ public class CommonConfig {
     }
 
     // 构建向量数据库操作对象
-    @Bean
+    // 初始化过了 以后就不用再初始化了 否则就是浪费token了
+//    @Bean
     public EmbeddingStore myEmbeddingStore() {
         // 1.加载文档进内存
 //        List<Document> documents = ClassPathDocumentLoader.loadDocuments("content");
