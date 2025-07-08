@@ -14,7 +14,8 @@ import reactor.core.publisher.Flux;
         streamingChatModel = "openAiStreamingChatModel", // 流式调用 非阻塞
 //        chatMemory = "chatMemory", // 配置会话记忆对象
         chatMemoryProvider = "chatMemoryProvider", // 配置会话记忆提供者对象
-        contentRetriever = "contentRetriever" // 配置向量数据库检索对象
+        contentRetriever = "contentRetriever", // 配置向量数据库检索对象
+        tools = "reservationTool"
 )
 //@AiService // 默认就可以使用，默认用的是自动装配，用上面的可以使得代码更为明晰，当然了，不加配置的代码更为简洁
 public interface ConsultantService {
